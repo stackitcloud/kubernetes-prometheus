@@ -29,6 +29,12 @@ data:
         static_configs:
         - targets:
           - "alertmanager.monitoring.svc:9093"
+          
+    remote_write:
+      - url: "https://push.metrics.testing.argus.eu01.stackit.cloud/instances/test-awesome/api/v1/receive"
+        basic_auth:
+          username: "testing_test-awesome_378432da-4056-45ea-8944-461dc4393a8a"
+          password: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
     scrape_configs:
       - job_name: 'kubernetes-apiservers'
