@@ -19,8 +19,8 @@ data:
           summary: High Memory Usage
   prometheus.yml: |-
     global:
-      scrape_interval: 5s
-      evaluation_interval: 5s
+      scrape_interval: 5m
+      evaluation_interval: 1m
     rule_files:
       - /etc/prometheus/prometheus.rules
     alerting:
@@ -35,6 +35,11 @@ data:
         basic_auth:
           username: "testing_test-awesome_378432da-4056-45ea-8944-461dc4393a8a"
           password: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        queue_config:
+          max_shards: 50
+          capacity: 5000
+          max_samples_per_send: 500
+          batch_send_deadline: 5s
 
     scrape_configs:
       - job_name: 'kubernetes-apiservers'
